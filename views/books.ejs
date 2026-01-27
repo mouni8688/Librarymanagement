@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+
+<h2>Books</h2>
+
+<form action="/books/add" method="POST" class="form-box">
+  <input type="text" name="title" placeholder="Title" required>
+  <input type="text" name="author" placeholder="Author" required>
+  <input type="number" name="quantity" placeholder="Quantity" required>
+  <button type="submit">Add Book</button>
+</form>
+
+<ul class="list">
+  <% books.forEach(b => { %>
+    <li>
+      <strong><%= b.title %></strong>
+      by <%= b.author %>
+      (Qty: <%= b.quantity %>)
+      <br>
+
+      <a href="/books/edit/<%= b._id %>">✏ Edit</a>
+      |
+      <a href="/books/delete/<%= b._id %>"
+         onclick="return confirm('Delete book?')">🗑 Delete</a>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include("partials/footer") %>

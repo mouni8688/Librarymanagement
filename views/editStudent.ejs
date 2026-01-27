@@ -1,0 +1,12 @@
+<%- include("partials/header") %>
+
+<h2>Edit Student</h2>
+
+<form method="POST" class="form-box">
+  <input name="rollNo" value="<%= student.rollNo %>" required>
+  <input name="name" value="<%= student.name %>" required>
+  <input name="email" value="<%= student.email %>" required>
+  <button>Update</button>
+</form>
+
+<%- include("partials/footer") %>

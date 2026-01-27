@@ -1,0 +1,12 @@
+<%- include("partials/header") %>
+
+<h2>Edit Book</h2>
+
+<form method="POST" class="form-box">
+  <input name="title" value="<%= book.title %>" required>
+  <input name="author" value="<%= book.author %>" required>
+  <input name="quantity" value="<%= book.quantity %>" required>
+  <button>Update</button>
+</form>
+
+<%- include("partials/footer") %>
