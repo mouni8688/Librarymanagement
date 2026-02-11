@@ -1,86 +1,270 @@
-body {
+/* =====================
+   RESET
+===================== */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-}
-
-/* HEADER */
-header {
-  background: #2c3e50;
-  color: white;
-  padding: 15px;
-}
-
-header h1 {
-  margin: 0;
-}
-
-nav {
-  margin-top: 10px;
-}
-
-nav a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* MAIN */
-main {
-  padding: 20px;
-}
-
-/* FORM */
-.form-box {
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-input, select {
-  padding: 8px;
-  margin: 5px;
-}
-
-button {
-  padding: 8px 12px;
-  background: #3498db;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-button:hover {
-  background: #2980b9;
-}
-
-/* LIST */
-.list {
-  list-style: none;
   padding: 0;
 }
 
-.list li {
-  background: white;
-  margin-bottom: 8px;
-  padding: 10px;
-  border-radius: 5px;
+/* =====================
+   BODY
+===================== */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #333;
 }
 
-/* FOOTER */
+/* =====================
+   HEADER
+===================== */
+header {
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  color: #fff;
+  padding: 20px 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+/* underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: #ffe600;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* LOGOUT BUTTON */
+nav a.logout {
+  background: #ff1744;
+  padding: 8px 16px;
+  border-radius: 25px;
+}
+
+nav a.logout:hover {
+  background: #d50000;
+}
+
+/* =====================
+   MAIN
+===================== */
+main {
+  padding: 30px;
+  flex: 1;
+}
+
+/* =====================
+   FORM
+===================== */
+.form-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  animation: slideUp 0.6s ease;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #7f00ff;
+  box-shadow: 0 0 8px rgba(127,0,255,0.4);
+}
+
+/* =====================
+   BUTTON
+===================== */
+button {
+  padding: 12px 22px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00c853, #64dd17);
+  color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,200,83,0.5);
+}
+
+/* =====================
+   LIST
+===================== */
+.list {
+  list-style: none;
+}
+
+/* EACH ROW – GRID SAFE (NO BREAK) */
+.list li {
+  background: white;
+  margin-bottom: 15px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.list li:hover {
+  transform: scale(1.015);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* BOOK / STUDENT INFO */
+.book-info {
+  font-size: 16px;
+}
+
+.book-info strong {
+  color: #2c2c2c;
+}
+
+/* =====================
+   ACTIONS
+===================== */
+.actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.actions a {
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.actions a.edit {
+  color: #7f00ff;
+}
+
+.actions a.delete {
+  color: #ff1744;
+}
+
+.actions a:hover {
+  transform: scale(1.15);
+}
+
+/* =====================
+   FOOTER
+===================== */
 footer {
-  background: #2c3e50;
+  background: linear-gradient(90deg, #ff6f00, #ff8f00);
   color: white;
   text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  padding: 14px;
+  font-weight: 500;
+}
+
+footer button {
+  margin-top: 8px;
+  background: #ffffff;
+  color: #ff6f00;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* =====================
+   LOGIN PAGE
+===================== */
+.login-box {
+  max-width: 400px;
+  margin: 80px auto;
+}
+
+/* =====================
+   ANIMATION
+===================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .list li {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
 }

@@ -1,67 +1,42 @@
 <%- include("partials/header") %>
 
-<h2>Issue Book</h2>
+<h2>📕 Issue Book</h2>
 
 <form action="/issues/add" method="POST" class="form-box">
-  <label>Select Book:</label><br>
   <select name="book" required>
-    <% books.forEach(b => { %>
-      <% if (b.quantity > 0) { %>
-        <option value="<%= b._id %>">
-          <%= b.title %> (Available: <%= b.quantity %>)
-        </option>
-      <% } %>
-    <% }) %>
+    <% books.forEach(b => { if (b.quantity > 0) { %>
+      <option value="<%= b._id %>"><%= b.title %></option>
+    <% } }) %>
   </select>
-  <br><br>
 
-  <label>Select Student:</label><br>
   <select name="student" required>
     <% students.forEach(s => { %>
-      <option value="<%= s._id %>">
-        <%= s.rollNo %> - <%= s.name %>
-      </option>
+      <option value="<%= s._id %>"><%= s.rollNo %> - <%= s.name %></option>
     <% }) %>
   </select>
-  <br><br>
 
-  <button type="submit">Issue Book</button>
+  <button>Issue</button>
 </form>
 
-<hr>
-
-<h3>Currently Issued Books</h3>
-
+<h3>📌 Issued</h3>
 <ul class="list">
   <% issued.forEach(i => { %>
     <li>
-      <strong><%= i.book.title %></strong>
-      → <%= i.student.name %>
-      <br>
-      <small>Issued on: <%= i.issueDate.toDateString() %></small>
-      <br>
-      <a href="/issues/return/<%= i._id %>"
-         onclick="return confirm('Return this book?')">
-        🔁 Return
-      </a>
+      <div>
+        <strong><%= i.book.title %></strong> → <%= i.student.name %>
+      </div>
+      <div class="actions">
+        <a href="/issues/return/<%= i._id %>" class="edit">🔁 Return</a>
+      </div>
     </li>
   <% }) %>
 </ul>
 
-<hr>
-
-<h3>Returned Books</h3>
-
+<h3>✅ Returned</h3>
 <ul class="list">
   <% returned.forEach(i => { %>
     <li>
-      <strong><%= i.book.title %></strong>
-      ← <%= i.student.name %>
-      <br>
-      <small>
-        Issued: <%= i.issueDate.toDateString() %> |
-        Returned: <%= i.returnDate.toDateString() %>
-      </small>
+      <strong><%= i.book.title %></strong> ← <%= i.student.name %>
     </li>
   <% }) %>
 </ul>

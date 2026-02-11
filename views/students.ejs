@@ -1,24 +1,27 @@
 <%- include("partials/header") %>
 
-<h2>Students</h2>
+<h2>👨‍🎓 Students</h2>
 
 <form action="/students/add" method="POST" class="form-box">
-  <input name="rollNo" placeholder="Roll Number" required>
-  <input type="text" name="name" placeholder="Student Name" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <button type="submit">Add Student</button>
+  <input name="rollNo" placeholder="Roll No" required>
+  <input name="name" placeholder="Name" required>
+  <input name="email" placeholder="Email" required>
+  <button>Add Student</button>
 </form>
 
 <ul class="list">
   <% students.forEach(s => { %>
     <li>
-      <strong><%= s.rollNo %></strong> - <%= s.name %><br>
-      <small><%= s.email %></small><br>
+      <div>
+        <strong><%= s.rollNo %></strong> - <%= s.name %><br>
+        <small><%= s.email %></small>
+      </div>
 
-      <a href="/students/edit/<%= s._id %>">✏ Edit</a>
-      |
-      <a href="/students/delete/<%= s._id %>"
-         onclick="return confirm('Delete student?')">🗑 Delete</a>
+      <div class="actions">
+        <a href="/students/edit/<%= s._id %>" class="edit">✏ Edit</a>
+        <a href="/students/delete/<%= s._id %>" class="delete"
+           onclick="return confirm('Delete student?')">🗑 Delete</a>
+      </div>
     </li>
   <% }) %>
 </ul>
